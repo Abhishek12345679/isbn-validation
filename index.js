@@ -15,9 +15,9 @@ const checksum = (isbn) => {
   const lastDigit = parseInt(last, 10);
 
   if (isbn.length === 10) {
-    checksumISBN10(number, lastDigit);
+    return checksumISBN10(number, lastDigit);
   } else if (isbn.length === 13) {
-    checksumISBN13(number, lastDigit);
+    return checksumISBN13(number, lastDigit);
   } else {
     return false;
   }
@@ -65,5 +65,5 @@ const checksumISBN13 = (number, lastDigit) => {
   return isValidISBN; // not sure it works in isbn 13
 };
 
-// checksum(9783161484100);
+console.log(checksum("9783161484100"));
 module.exports.checksum = checksum;
