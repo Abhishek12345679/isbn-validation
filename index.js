@@ -82,5 +82,5 @@ const checksumISBN13 = (number, lastDigit) => {
   return isValidISBN; // not sure it works in isbn 13
 };
 
-checksum(9783161484100);
+// checksum(9783161484100);
 module.exports.checksum = checksum;
