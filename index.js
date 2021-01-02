@@ -31,7 +31,7 @@ const checksum = (isbn) => {
   const last = isbn.slice(-1);
   const lastDigit = parseInt(last, 10);
 
-  if (isbn.length === 10) {
+  if (isbn.length <= 10) {
     checksumISBN10(number, lastDigit);
   } else if (isbn.length === 13) {
     checksumISBN13(number, lastDigit);
@@ -72,13 +72,13 @@ const checksumISBN13 = (number, lastDigit) => {
 
   //Calculate checksum from array:
   const sum = number.reduce((a, b) => a + b, 0);
-  console.log(sum);
+  //   console.log(sum);
 
   //Validate control digit:
   const controlDigit = (10 - (sum % 10)) % 10;
   //   console.log(controlDigit);
   const isValidISBN = lastDigit === controlDigit;
-  console.log(isValidISBN);
+  //   console.log(isValidISBN);
   return isValidISBN; // not sure it works in isbn 13
 };
 
