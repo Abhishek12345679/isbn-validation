@@ -3,24 +3,7 @@
  * Checksum for validate ISBN-10 and ISBN-13.
  */
 
-const numLength = (num) => {
-  let n = num;
-  let length = 0;
-  do {
-    n /= 10;
-    length++;
-  } while (n >= 1);
-
-  return length;
-};
-
 const checksum = (isbn) => {
-  if (numLength(isbn) === 9) {
-    isbn = "0" + isbn.toString();
-  } else {
-    isbn = isbn.toString();
-  }
-
   //Remove last digit (control digit):
   let number = isbn.slice(0, -1);
 
@@ -31,7 +14,7 @@ const checksum = (isbn) => {
   const last = isbn.slice(-1);
   const lastDigit = parseInt(last, 10);
 
-  if (isbn.length <= 10) {
+  if (isbn.length === 10) {
     checksumISBN10(number, lastDigit);
   } else if (isbn.length === 13) {
     checksumISBN13(number, lastDigit);
@@ -54,7 +37,7 @@ const checksumISBN10 = (number, lastDigit) => {
   const controlDigit = (11 - (sum % 11)) % 11;
   //   console.log(controlDigit);
   const isValidISBN = lastDigit === controlDigit;
-  console.log(isValidISBN);
+  //   console.log(isValidISBN);
   return isValidISBN; // not sure it works in isbn 13
 };
 
