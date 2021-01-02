@@ -3,11 +3,24 @@
  * Checksum for validate ISBN-10 and ISBN-13.
  */
 
+const numLength = (num) => {
+  let n = num;
+  let length = 0;
+  do {
+    n /= 10;
+    length++;
+  } while (n >= 1);
+
+  return length;
+};
+
 const checksum = (isbn) => {
-  //isbn have to be number or string (composed only of digits or char "X"):
-  isbn = "0" + isbn.toString(8);
-  console.log(isbn);
-  console.log(isbn.length);
+  if (numLength(isbn) === 9) {
+    isbn = "0" + isbn.toString();
+  } else {
+    isbn = isbn.toString();
+  }
+
   //Remove last digit (control digit):
   let number = isbn.slice(0, -1);
 
@@ -38,7 +51,8 @@ const checksumISBN10 = (number, lastDigit) => {
   console.log(sum);
 
   //Validate control digit:
-  const controlDigit = sum % 11;
+  const controlDigit = (11 - (sum % 11)) % 11;
+  console.log(controlDigit);
   const isValidISBN = lastDigit === controlDigit;
   console.log(isValidISBN);
   return isValidISBN; // not sure it works in isbn 13
@@ -61,11 +75,12 @@ const checksumISBN13 = (number, lastDigit) => {
   console.log(sum);
 
   //Validate control digit:
-  const controlDigit = 10 - (sum % 10);
+  const controlDigit = (10 - (sum % 10)) % 10;
   console.log(controlDigit);
   const isValidISBN = lastDigit === controlDigit;
   console.log(isValidISBN);
   return isValidISBN; // not sure it works in isbn 13
 };
 
+checksum(9783161484100);
 module.exports.checksum = checksum;
