@@ -48,11 +48,11 @@ const checksumISBN10 = (number, lastDigit) => {
 
   //Calculate checksum from array:
   const sum = number.reduce((a, b) => a + b, 0);
-  console.log(sum);
+  //   console.log(sum);
 
   //Validate control digit:
   const controlDigit = (11 - (sum % 11)) % 11;
-  console.log(controlDigit);
+  //   console.log(controlDigit);
   const isValidISBN = lastDigit === controlDigit;
   console.log(isValidISBN);
   return isValidISBN; // not sure it works in isbn 13
@@ -61,14 +61,14 @@ const checksumISBN10 = (number, lastDigit) => {
 //13
 const checksumISBN13 = (number, lastDigit) => {
   //Algorithm for checksum calculation (digit * position):
-  console.log(number);
+  //   console.log(number);
   number = number.map((digit, index) => {
-    console.log(index);
+    // console.log(index);
     // console.log(digit);
     const multiple = digit * (index % 2 === 0 ? 1 : 3);
     return multiple;
   });
-  console.log(number);
+  //   console.log(number);
 
   //Calculate checksum from array:
   const sum = number.reduce((a, b) => a + b, 0);
@@ -76,7 +76,7 @@ const checksumISBN13 = (number, lastDigit) => {
 
   //Validate control digit:
   const controlDigit = (10 - (sum % 10)) % 10;
-  console.log(controlDigit);
+  //   console.log(controlDigit);
   const isValidISBN = lastDigit === controlDigit;
   console.log(isValidISBN);
   return isValidISBN; // not sure it works in isbn 13
