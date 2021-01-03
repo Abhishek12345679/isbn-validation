@@ -1,6 +1,6 @@
 {
     "name": "isbn-validation",
-    "version": "1.0.7",
+    "version": "1.0.71",
     "description": "validation for ISBN-10 and ISBN-13",
     "main": "index.js",
     "scripts": {
